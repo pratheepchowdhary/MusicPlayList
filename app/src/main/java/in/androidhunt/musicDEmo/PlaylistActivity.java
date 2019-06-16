@@ -131,21 +131,23 @@ public class PlaylistActivity extends AppCompatActivity implements CurrentSessio
     private List<MediaMetaData> listOfSongs = new ArrayList<MediaMetaData>();
     private String title;
     private String musicDir;
-    private String movie;
+    private String platList_Id;
     private String albumImg;
     private boolean isPlaylistAdded;
-
+    public  static  final String PLAYLIST_ID="playlist_id";
+    public static  final String MUSIC_DIR="music_dir";
+    public static final  String ALBUM_ART="album_art";
+    public static final String ALBUM_NAME="album_name";
     public static void navigate(SongsActivity songsActivity, View viewById, Album album) {
-        String status = album.getStatus();
-        String about = album.getAbout();
+        String about = album.getMusicDir();
         String imgurl = album.getThumbnail();
         String title = album.getName();
         String playlistid = album.getId();
         Intent intent = new Intent(songsActivity, PlaylistActivity.class);
-        intent.putExtra("movie", playlistid);
-        intent.putExtra("multiple", about);
-        intent.putExtra("pic", imgurl);
-        intent.putExtra("TIT", title);
+        intent.putExtra(PLAYLIST_ID, playlistid);
+        intent.putExtra(MUSIC_DIR, about);
+        intent.putExtra(ALBUM_ART, imgurl);
+        intent.putExtra(ALBUM_NAME, title);
         ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(songsActivity, viewById, imgurl);
         ActivityCompat.startActivity(songsActivity, intent, options.toBundle());
     }
@@ -159,10 +161,10 @@ public class PlaylistActivity extends AppCompatActivity implements CurrentSessio
         setContentView(R.layout.playlist_activity);
         ButterKnife.bind(this);
         Intent i = getIntent();
-        title = i.getStringExtra("TIT");
-        musicDir = i.getStringExtra("multiple");
-        movie = i.getStringExtra("movie");
-        albumImg = i.getStringExtra("pic");
+        title = i.getStringExtra(ALBUM_NAME);
+        musicDir = i.getStringExtra(MUSIC_DIR);
+        platList_Id = i.getStringExtra(PLAYLIST_ID);
+        albumImg = i.getStringExtra(ALBUM_ART);
         //Used  or Element View Transitions
         ViewCompat.setTransitionName(findViewById(R.id.app_bar_layout), albumImg);
         supportPostponeEnterTransition();
@@ -236,7 +238,7 @@ public class PlaylistActivity extends AppCompatActivity implements CurrentSessio
         this.context = PlaylistActivity.this;
         configAudioStreamer();
         uiInitialization();
-        onLoadPlaylist(movie, albumImg);
+        onLoadPlaylist(platList_Id, albumImg);
         checkAlreadyPlaying();
 
 
@@ -738,10 +740,10 @@ public class PlaylistActivity extends AppCompatActivity implements CurrentSessio
 
     private PendingIntent getNotificationPendingIntent() {
         Intent intent = new Intent(context, PlaylistActivity.class);
-        intent.putExtra("movie", movie);
-        intent.putExtra("multiple", musicDir);
-        intent.putExtra("pic", albumImg);
-        intent.putExtra("TIT", title);
+        intent.putExtra(PLAYLIST_ID, platList_Id);
+        intent.putExtra(MUSIC_DIR, musicDir);
+        intent.putExtra(ALBUM_ART, albumImg);
+        intent.putExtra(ALBUM_NAME, title);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         return pendingIntent;
     }

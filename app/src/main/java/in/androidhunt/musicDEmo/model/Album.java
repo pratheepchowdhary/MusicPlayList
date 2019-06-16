@@ -29,11 +29,11 @@ public class Album {
         this.name = name;
     }
 
-    public String getAbout() {
+    public String getMusicDir() {
         return about;
     }
 
-    public void setAbout(String about) {
+    public void setMusicDir(String about) {
         this.about = about;
     }
 

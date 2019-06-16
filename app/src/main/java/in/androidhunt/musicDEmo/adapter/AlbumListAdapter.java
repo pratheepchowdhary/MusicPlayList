@@ -53,7 +53,7 @@ public class AlbumListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             final Album m = albumList.get(position);
 
             ((ViewHolder) holder).title.setText(m.getName());
-            ((ViewHolder) holder).gener.setText(m.getAbout());
+            ((ViewHolder) holder).gener.setText(m.getMusicDir());
             Picasso.with(context).load(m.getThumbnail()).into(((ViewHolder) holder).imageView);
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
