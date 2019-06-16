@@ -258,7 +258,7 @@ public class PlaylistActivity extends AppCompatActivity implements CurrentSessio
             OfflineMode();
             if (!movie.equals("")) {
                 avi.setVisibility(View.VISIBLE);
-                String songs = "https://api.soundcloud.com/playlists/" + movie + "?client_id=bd6d136e05d880eea1bc0b1a7bcad42f";
+                String songs = "https://api.soundcloud.com/playlists/" + movie + "?client_id=95f22ed54a5c297b1c41f72d713623ef";
                 JsonObjectRequest movieReq = new JsonObjectRequest(Request.Method.GET, songs,
                         null, new Response.Listener<JSONObject>() {
                     @Override
@@ -275,7 +275,7 @@ public class PlaylistActivity extends AppCompatActivity implements CurrentSessio
                                 mediaMetaData.setMediaAlbum(title);
                                 mediaMetaData.setMediaArt(img);
                                 mediaMetaData.setMediaArtist(musicDir);
-                                String songUrl = media.getString("stream_url") + "?client_id=bd6d136e05d880eea1bc0b1a7bcad42f";
+                                String songUrl = media.getString("stream_url") + "?client_id=95f22ed54a5c297b1c41f72d713623ef";
                                 String songtitle = media.getString("title").replaceAll(".mp3", "").replaceAll("[0-9]", "").replaceAll("\\[.*?\\]", "").replaceAll("-", "").replaceAll("_", "").replaceAll("\\.", "").replaceAll("\\p{P}", "").replaceAll("Kbps", "");
                                 mediaMetaData.setMediaUrl(songUrl);
                                 long duration = Long.parseLong(media.getString("duration"));
