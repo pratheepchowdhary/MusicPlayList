@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/dragView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/image_songAlbumArtBlur"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_default_album_art" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+       >
+        <ImageButton
+
+            android:id="@+id/down_arrow"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="45dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="start"
+            android:src="@drawable/ic_down_arow"
+            android:background="@drawable/ic_down_arow"
+
+            />
+
+        <LinearLayout
+            android:id="@+id/layout_media_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_marginTop="30dp"
+            android:padding="15dp">
+
+            <TextView
+                android:id="@+id/text_songName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="My Fev Songs"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_songAlb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="My Fev Album"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="240dp"
+            android:layout_height="380dp"
+            android:layout_below="@+id/layout_media_info"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp">
+            <LinearLayout
+                android:id="@+id/linear_layout_music_cover"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:clickable="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/image_songAlbumArt"
+                    android:layout_width="@dimen/cover_width_height"
+                    android:layout_height="250dp"
+                    android:scaleType="fitXY"
+                    />
+
+                <ImageView
+                    android:id="@+id/cover_mirror"
+                    android:layout_width="@dimen/cover_width_height"
+                    android:layout_height="@dimen/cover_mirror_height"
+                    android:scaleType="fitXY"
+                    android:layout_marginTop="@dimen/cover_mirror_margin_top"
+                    />
+            </LinearLayout>
+        </RelativeLayout>
+
+
+        <include
+            android:id="@+id/bottom_palyLayout"
+            layout="@layout/include_slidepanelchildtwo_bottomview"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottom_control_panel"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_vertical"
+            android:orientation="vertical" />
+
+        <include
+            android:id="@+id/slideBottomView"
+            layout="@layout/include_slidepanelchildtwo_topviewtwo"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:visibility="invisible" />
+    </RelativeLayout>
+</RelativeLayout>

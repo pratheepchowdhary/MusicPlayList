@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white">
+
+    <TextView
+        android:id="@+id/album_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:gravity="left|center"
+        android:maxLines="1"
+        android:text="Rabhasa"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:textStyle="normal" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/musicDir_View"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/album_name"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_artist_music" />
+
+    <TextView
+        android:id="@+id/artist_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/album_name"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/musicDir_View"
+        android:gravity="left|center"
+        android:maxLines="1"
+        android:text="Thaman SS"
+        android:textColor="@android:color/black"
+        android:textSize="12sp"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/s_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/artist_name"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/musicDir_View"
+        android:gravity="left|center"
+        android:maxLines="1"
+        android:text="5 songs"
+        android:textColor="@android:color/black"
+        android:textSize="10sp"
+        android:textStyle="normal" />
+
+</RelativeLayout>
