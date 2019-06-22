@@ -4,7 +4,6 @@ package in.androidhunt.musicDEmo;
 import android.app.Application;
 import android.content.Context;
 import android.os.Handler;
-import android.text.TextUtils;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -13,8 +12,6 @@ import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
-
-import java.io.File;
 
 public class App extends Application {
     public static final String TAG = App.class.getSimpleName();
@@ -33,24 +30,6 @@ public class App extends Application {
         return mInstance;
     }
 
-    public static App getApplication() {
-        return application;
-    }
-
-    private static boolean deleteDir(File dir) {
-        if (dir != null && dir.isDirectory()) {
-            String[] children = dir.list();
-            for (int i = 0; i < children.length; i++) {
-                boolean success = deleteDir(new File(dir, children[i]));
-                if (!success) {
-                    return false;
-                }
-            }
-        }
-        return dir.delete();
-        // TODO Auto-generated method stub
-
-    }
 
     public static void initImageLoader(Context context) {
         ImageLoaderConfiguration.Builder config = new ImageLoaderConfiguration.Builder(context);
@@ -67,9 +46,7 @@ public class App extends Application {
 
     @Override
     public void onCreate() {
-
         super.onCreate();
-
         mInstance = this;
         initImageLoader(getApplicationContext());
         application = this;
@@ -84,22 +61,12 @@ public class App extends Application {
         return mRequestQueue;
     }
 
-    public <T> void addToRequestQueue(Request<T> req, String tag) {
-        req.setTag(TextUtils.isEmpty(tag) ? TAG : tag);
-        getRequestQueue().add(req);
-    }
+
 
     public <T> void addToRequestQueue(Request<T> req) {
         req.setTag(TAG);
         getRequestQueue().add(req);
     }
-
-    public void cancelPendingRequests(Object tag) {
-        if (mRequestQueue != null) {
-            mRequestQueue.cancelAll(tag);
-        }
-    }
-
     @Override
     public void onTerminate() {
         super.onTerminate();
