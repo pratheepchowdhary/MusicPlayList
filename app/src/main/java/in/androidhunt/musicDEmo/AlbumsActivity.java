@@ -44,8 +44,8 @@ import butterknife.ButterKnife;
 import in.androidhunt.musicDEmo.adapter.AlbumListAdapter;
 import in.androidhunt.musicDEmo.model.Album;
 
-public class SongsActivity extends AppCompatActivity implements AlbumListAdapter.OnItemClickListener {
-    private static final String TAG = SongsActivity.class.getSimpleName();
+public class AlbumsActivity extends AppCompatActivity implements AlbumListAdapter.OnItemClickListener {
+    private static final String TAG = AlbumsActivity.class.getSimpleName();
     private static String url = "https://www.androidhunt.in/apps/json/playlist.php";
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;

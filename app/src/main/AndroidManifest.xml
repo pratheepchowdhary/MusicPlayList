@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".SongsActivity"
+            android:name=".AlbumsActivity"
             android:screenOrientation="portrait"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">

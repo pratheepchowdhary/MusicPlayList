@@ -41,6 +41,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -124,7 +125,7 @@ public class PlaylistActivity extends AppCompatActivity implements CurrentSessio
     private boolean isExpand = false;
     private Context context;
     @BindView(R.id.btn_forward)
-     ImageView btn_forward;
+    ImageView btn_forward;
     //For  Implementation
     private AudioStreamingManager streamingManager;
     private MediaMetaData currentSong;
@@ -134,22 +135,28 @@ public class PlaylistActivity extends AppCompatActivity implements CurrentSessio
     private String platList_Id;
     private String albumImg;
     private boolean isPlaylistAdded;
-    public  static  final String PLAYLIST_ID="playlist_id";
-    public static  final String MUSIC_DIR="music_dir";
-    public static final  String ALBUM_ART="album_art";
-    public static final String ALBUM_NAME="album_name";
-    public static void navigate(SongsActivity songsActivity, View viewById, Album album) {
+    public static final String PLAYLIST_ID = "playlist_id";
+    public static final String MUSIC_DIR = "music_dir";
+    public static final String ALBUM_ART = "album_art";
+    public static final String ALBUM_NAME = "album_name";
+    @BindView(R.id.fab)
+    FloatingActionButton floatingActionButton;
+    @BindView(R.id.app_bar_layout)
+    AppBarLayout appBarLayout;
+
+
+    public static void navigate(AlbumsActivity albumsActivity, View viewById, Album album) {
         String about = album.getMusicDir();
         String imgurl = album.getThumbnail();
         String title = album.getName();
         String playlistid = album.getId();
-        Intent intent = new Intent(songsActivity, PlaylistActivity.class);
+        Intent intent = new Intent(albumsActivity, PlaylistActivity.class);
         intent.putExtra(PLAYLIST_ID, playlistid);
         intent.putExtra(MUSIC_DIR, about);
         intent.putExtra(ALBUM_ART, imgurl);
         intent.putExtra(ALBUM_NAME, title);
-        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(songsActivity, viewById, imgurl);
-        ActivityCompat.startActivity(songsActivity, intent, options.toBundle());
+        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(albumsActivity, viewById, imgurl);
+        ActivityCompat.startActivity(albumsActivity, intent, options.toBundle());
     }
 
     @Override
@@ -166,7 +173,7 @@ public class PlaylistActivity extends AppCompatActivity implements CurrentSessio
         platList_Id = i.getStringExtra(PLAYLIST_ID);
         albumImg = i.getStringExtra(ALBUM_ART);
         //Used  or Element View Transitions
-        ViewCompat.setTransitionName(findViewById(R.id.app_bar_layout), albumImg);
+        ViewCompat.setTransitionName(appBarLayout, albumImg);
         supportPostponeEnterTransition();
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -218,7 +225,6 @@ public class PlaylistActivity extends AppCompatActivity implements CurrentSessio
                 }
             }
         });
-        FloatingActionButton floatingActionButton = findViewById(R.id.fab);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -434,11 +440,11 @@ public class PlaylistActivity extends AppCompatActivity implements CurrentSessio
                 if (slideOffset == 0.0f) {
                     isExpand = false;
                     slideBottomView.setVisibility(View.VISIBLE);
-                    //slideBottomView.getBackground().setAlpha(0);
+//                    slideBottomView.getBackground().setAlpha(0);
                 } else if (slideOffset > 0.0f && slideOffset < 1.0f) {
-                    //slideBottomView.getBackground().setAlpha((int) slideOffset * 255);
+//                    slideBottomView.getBackground().setAlpha((int) slideOffset * 255);
                 } else {
-                    //slideBottomView.getBackground().setAlpha(100);
+//                    slideBottomView.getBackground().setAlpha(100);
                     isExpand = true;
                     slideBottomView.setVisibility(View.GONE);
                 }
@@ -747,5 +753,4 @@ public class PlaylistActivity extends AppCompatActivity implements CurrentSessio
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         return pendingIntent;
     }
-
 }

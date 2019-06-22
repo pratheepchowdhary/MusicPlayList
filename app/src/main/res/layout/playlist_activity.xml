@@ -49,6 +49,13 @@
                     android:layout_marginTop="24dp"
                     app:layout_collapseMode="pin"
                     app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar_dummy"
+                    android:visibility="invisible"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_collapseMode="pin"
+                    />
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 
